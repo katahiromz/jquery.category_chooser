@@ -43,38 +43,38 @@
 		_dict_loaded: function(){
 			var self = this;
 
-			this.setL0();
-			this.setL1(this.options.level1);
-			this.setL2(this.options.level2);
-			this.setL3(this.options.level3);
-			this.setL4(this.options.level4);
+			this._setL0();
+			this._setL1(this.options.level1);
+			this._setL2(this.options.level2);
+			this._setL3(this.options.level3);
+			this._setL4(this.options.level4);
 
 			$(this._get_id(1)).on('change', function(){
-				self.setL1();
-				self.setL2("");
-				self.setL3("");
-				self.setL4("");
+				self._setL1();
+				self._setL2("");
+				self._setL3("");
+				self._setL4("");
 				var cap = $(self._get_id(1));
 				self._trigger('change', event, cap);
 			});
 
 			$(this._get_id(2)).on('change', function(){
-				self.setL2();
-				self.setL3("");
-				self.setL4("");
+				self._setL2();
+				self._setL3("");
+				self._setL4("");
 				var cap = $(self._get_id(2));
 				self._trigger('change', event, cap);
 			});
 
 			$(this._get_id(3)).on('change', function(){
-				self.setL3();
-				self.setL4("");
+				self._setL3();
+				self._setL4("");
 				var cap = $(self._get_id(3));
 				self._trigger('change', event, cap);
 			});
 
 			$(this._get_id(4)).on('change', function(){
-				self.setL4();
+				self._setL4();
 				var cap = $(self._get_id(4));
 				self._trigger('change', event, cap);
 			});
@@ -103,40 +103,40 @@
 		level1: function(newValue) {
 			if (newValue == undefined)
 				return this.options.level1;
-			this.setL1(newValue);
+			this._setL1(newValue);
 		},
 		level2: function(newValue) {
 			if (newValue == undefined)
 				return this.options.level2;
-			this.setL2(newValue);
+			this._setL2(newValue);
 		},
 		level3: function(newValue) {
 			if (newValue == undefined)
 				return this.options.level3;
-			this.setL3(newValue);
+			this._setL3(newValue);
 		},
 		level4: function(newValue) {
 			if (newValue == undefined)
 				return this.options.level4;
-			this.setL4(newValue);
+			this._setL4(newValue);
 		},
-		value: function(newValue) {
+		values: function(newValue) {
 			if (newValue == undefined)
-				return
+				return ("" +
 					this.options.level1 + "\t" +
 					this.options.level2 + "\t" +
 					this.options.level3 + "\t" +
-					this.options.level4;
+					this.options.level4);
 			var data = newValue.split("\t");
 			if (data.length == 4) {
-				this.setL0();
-				this.setL1(data[0]);
-				this.setL2(data[1]);
-				this.setL3(data[2]);
-				this.setL4(data[3]);
+				this._setL0();
+				this._setL1(data[0]);
+				this._setL2(data[1]);
+				this._setL3(data[2]);
+				this._setL4(data[3]);
 			}
 		},
-		setL0: function() {
+		_setL0: function() {
 			var l1 = $(this._get_id(1));
 			l1.empty().append('<option value="" selected>&nbsp;</option>');
 
@@ -147,7 +147,7 @@
 				}
 			}
 		},
-		setL1: function(value) {
+		_setL1: function(value) {
 			var l1 = $(this._get_id(1));
 			value = value || l1.val();
 			l1.val(value);
@@ -164,7 +164,7 @@
 				}
 			}
 		},
-		setL2: function(value) {
+		_setL2: function(value) {
 			var l2 = $(this._get_id(2));
 			value = value || l2.val();
 			l2.val(value);
@@ -180,7 +180,7 @@
 				}
 			}
 		},
-		setL3: function(value) {
+		_setL3: function(value) {
 			var l3 = $(this._get_id(3));
 			value = value || l3.val();
 			l3.val(value);
@@ -197,7 +197,7 @@
 				}
 			}
 		},
-		setL4: function(value) {
+		_setL4: function(value) {
 			var l4 = $(this._get_id(4));
 			var value = value || l4.val();
 			l4.val(value);

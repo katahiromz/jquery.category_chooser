@@ -20,10 +20,12 @@
 	<div id="category_chooser_2" class="category_chooser"></div>
 	<script>
 		$("#category_chooser_1").category_chooser();
-		$("#category_chooser_2").category_chooser();
+		$("#category_chooser_2").category_chooser({
+			change: function(e, cap) { alert("change: " + e.type); }
+		});
 		$("#category_chooser_1").category_chooser('level1', "空港土木");
-		$("#category_chooser_2").category_chooser('value', "港湾・港湾海岸・空港\t浚渫工\tポンプ浚渫工\t");
+		$("#category_chooser_2").category_chooser('values', "港湾・港湾海岸・空港\t浚渫工\tポンプ浚渫工\t");
 		alert($("#category_chooser_1").category_chooser('level1'));
-		alert($("#category_chooser_2").category_chooser('value'));
+		alert(JSON.stringify($("#category_chooser_2").category_chooser('values')));
 	</script>
 </body></html>
